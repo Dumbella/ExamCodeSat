@@ -1,62 +1,56 @@
 ﻿using System;
 
-namespace examSat
+namespace Exam4
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string mode = Console.ReadLine();
-            double filmBackWidth = double.Parse(Console.ReadLine());
-            if (filmBackWidth > 0)
-            {
-                do
-                    {
-                        Console.WriteLine("invalid filmBackWidth please input again.");
-                        filmBackWidth = double.Parse(Console.ReadLine());
+            float x, y, dx, dy, step;
 
-                     } while (filmBackWidth !> 0);
+            float x1 = float.Parse(Console.ReadLine());
+            float x2 = float.Parse(Console.ReadLine());
+            float y1 = float.Parse(Console.ReadLine());
+            float y2 = float.Parse(Console.ReadLine());
+
+            dx = x2 - x1;
+            dy = y2 - y1;
+
+            if (Math.Abs(dx) >= Math.Abs(dy))
+            {
+                step = Math.Abs(dx);
+
+                dx /= step;
+                dy /= step;
+                x = x1;
+                y = y1;
+              
+                for (int i = 1; i <= step; i++)
+                {
+                    Console.WriteLine("{0},{1}",x,y);
+                    x += dx;
+                    y += dy;
+                }
             }
             else
             {
-                double fLength, fov;
+                step = Math.Abs(dy);
 
-                if (mode == "fLength")
+                step = Math.Abs(dx);
+
+                dx /= step;
+                dy /= step;
+                x = x1;
+                y = y1;
+
+                for (int i = 1; i <= step; i++)
                 {
-                    do
-                    {
-                        Console.WriteLine("invalid fLength please input again.");
-                        fLength = double.Parse(Console.ReadLine());
-
-                    } while (fLength !> 0);
-                    if (fLength>0)
-                    {
-                        fov = 2 * Math.Atan(filmBackWidth / (2 * fLength));
-                        Console.WriteLine("fLength = {0}, fov = {1}", fLength, fov);
-                    }
-                    
+                    Console.WriteLine("{0},{1}", x, y);
+                    x += dx;
+                    y += dy;
                 }
-                else if(mode == "fov")
-                {
-                    do
-                    {
-                        Console.WriteLine("invalid fov. please input again.");
-                        fov = double.Parse(Console.ReadLine());
+            }
 
-                    } while (fov !> 0.1 && fov !< 6.28 );
-
-                    if (fov > 0.1 && fov < 6.28)
-                    {
-                        fLength = filmBackWidth / (2 * Math.Atan(fov / 2));
-
-                        Console.WriteLine("fLength = {0}, fov = {1}", fLength, fov);
-                    }
-                    }
-                }
-                
-            
-
-            
         }
     }
 }
