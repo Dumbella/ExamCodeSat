@@ -31,7 +31,7 @@ namespace examSat
                     } while (fLength !> 0);
                     if (fLength>0)
                     {
-                        fov = 2 * Math.Atan2(filmBackWidth / 2, fLength);
+                        fov = 2 * Math.Atan(filmBackWidth / (2 * fLength));
                         Console.WriteLine("fLength = {0}, fov = {1}", fLength, fov);
                     }
                     
